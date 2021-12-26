@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+
+<style type="text/css">
+	.zk {
+		 text-align: center; background-color: pink; margin-left: 500px;
+		 margin-right: 500px;
+	}
+
+	.resultTable{
+		border-style: dashed; font-family: fantasy; color: blue;
+	}
+
+	.button {
+		background-color: lightgreen; font-size: 24px; padding: 14px 40px;
+		border-radius: 12px; border: 2px solid lightgreen;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+
+	.button:hover {
+		background-color: white; font-size: 24px; padding: 14px 40px;
+		border-radius: 12px; border: 3px solid lightgreen; transition-duration: 0.4s;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+</style>
+
+<body>
+<div class="zk">
+<h1>Guessing Game</h1>
+<form>
+<p>Your Guess (1 - 100)</p>
+<input type="text" id="guess" >
+<p><input class="button" type="button" value="play" onclick="start()"></p>
+</form>
+<div class="resultTable" id="result">
+<p>Result</p>
+</div>
+</div>
+
+<script type="text/javascript">
+	var ans = Math.floor(Math.random()*100+1);
+	var max = 100;
+	var min = 1;
+
+	function start(){
+		var input = document.getElementById("guess").value;
+		if(input > ans){
+			max = input;
+			detail();
+		}else if(input < ans){
+			min = input;
+			detail();
+		}else{
+			alert("You are right!!!");
+		}
+
+	}
+
+	function detail(){
+		var next = document.createElement("div");
+		var range = document.createTextNode(min + "~" + max);
+		next.appendChild(range);
+		document.getElementById("result").appendChild(next);
+	}
+
+</script>
+
+</body>
+</html>
